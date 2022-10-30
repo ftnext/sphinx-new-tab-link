@@ -1,4 +1,8 @@
 # sphinx-new-tab-link
+![testing workflow](https://github.com/ftnext/sphinx-new-tab-link/actions/workflows/testing.yml/badge.svg)
+[![PyPI version](https://badge.fury.io/py/sphinx-new-tab-link.svg)](https://badge.fury.io/py/sphinx-new-tab-link)
+[![Python Versions](https://img.shields.io/pypi/pyversions/sphinx-new-tab-link.svg)](https://pypi.org/project/sphinx-new-tab-link/)
+
 Open external links in new tabs of the browser in Sphinx HTML documents
 
 ## Overview
