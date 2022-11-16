@@ -1,0 +1,27 @@
+name: Build document
+
+on: [push]
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Install build dependencies
+      run: |
+        python -m pip install -U pip
+        python -m pip install .
+    - name: Build document
+      run: |
+        cd docs/
+        make html
+    - name: Push to GitHub Pages branch
+      uses: ftnext/action-push-ghpages@v1.0.0
+      with:
+        build_dir: docs/_build/html
+        github_token: ${{ secrets.GITHUB_TOKEN }}
