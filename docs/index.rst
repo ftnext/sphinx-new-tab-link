@@ -10,6 +10,8 @@ Welcome to sphinx-new-tab-link documentation's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   guide.rst
+   guide.en.rst
 
 
 Indices and tables
