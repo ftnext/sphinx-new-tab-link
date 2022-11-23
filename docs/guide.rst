@@ -40,4 +40,49 @@
 
 HTML中の外部リンクが、ブラウザの新しいタブで開かれるようになります。
 
+対応している記法
+--------------------
+
+reSTで可能なさまざまな記法による外部リンクをサポートしています。
+
+✅直接URLだけを書いた行
+
+https://github.com/ftnext/sphinx-new-tab-link
+
+✅インラインで書いたURL（「リンク集」の *PyPI* 参照）
+
+.. _公開版ガイド: https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+✅外部ハイパーリンクターゲットを定義し、それを参照： `公開版ガイド`_
+
+.. code-block:: rest
+
+    .. _公開版ガイド: https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+    外部ハイパーリンクターゲットを定義し、それを参照： `公開版ガイド`_
+
+.. __: https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+✅匿名ハイパーリンク記法： `公開版ガイド（匿名記法）`__
+
+.. code-block:: rest
+
+    .. __: https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+    匿名ハイパーリンク記法： `公開版ガイド（匿名記法）`__
+
+✅アンダースコア2つの埋め込みURL： `GitHub Repository（ターゲット定義なし） <https://github.com/ftnext/sphinx-new-tab-link>`__
+
+.. code-block:: rst
+
+    `GitHub Repository（ターゲット定義なし） <https://github.com/ftnext/sphinx-new-tab-link>`__
+
+✅アンダースコア1つの埋め込みURLによって定義したターゲット（リンク集の *GitHub Repository*）を再度参照： `GitHub Repository`_
+
+.. code-block:: rst
+
+    `GitHub Repository <https://github.com/ftnext/sphinx-new-tab-link>`_
+
+    再度 `GitHub Repository`_ を参照できる
+
 Enjoy documentation!🙌
