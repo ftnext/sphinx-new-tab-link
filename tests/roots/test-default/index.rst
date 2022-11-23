@@ -2,10 +2,12 @@
 Test documentation
 ==================
 
-.. _ref_to_section1:
+reST supports a lot of link notations.
 
-Section 1
-=========
+Raw
+===
+
+http://abehiroshi.la.coocan.jp
 
 - 🎀
 - 👑
@@ -13,7 +15,12 @@ Section 1
 - 👠
 - 🤲
 
-External link: `Example <https://example.com/>`_
+We can write URL https://pypi.org/project/sphinx-new-tab-link/ inline.
+
+.. _ref_to_section1:
+
+Section 1
+=========
 
 - 🐑
 - 🎤
@@ -21,10 +28,28 @@ External link: `Example <https://example.com/>`_
 - 📶
 - 🖤
 
+Markup
+======
+
+.. _reStructuredText Primer: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+
+Refer target `reStructuredText Primer`_ 😃
+
+Embedded URL
+------------
+
+External link (with target definition): `Example <https://example.com/>`_
+
+Anonymous external link `httpbin <https://httpbin.org/>`__.
+
+Here `Example`_, we can refer the target!
+
 Section 2
 =========
 
-http://abehiroshi.la.coocan.jp
+.. __: https://github.com/ftnext/sphinx-new-tab-link
+
+This package's `source code`__.
 
 1. ヒ
 2. ト
