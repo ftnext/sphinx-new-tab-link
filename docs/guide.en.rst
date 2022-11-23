@@ -40,4 +40,49 @@ That's it!
 
 External links in HTML will be opened in a new tab of the browser.
 
+Supported notations
+--------------------
+
+It supports various notations of a external link possible in reST.
+
+✅Line with URL only
+
+https://github.com/ftnext/sphinx-new-tab-link
+
+✅URL written inline (See *PyPI* at 'Links' section)
+
+.. _Published guide: https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+✅Define an external hyperlink target and refer it: `Published guide`_
+
+.. code-block:: rest
+
+    .. _Published guide: https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+    Define an external hyperlink target and refer it: `Published guide`_
+
+.. __: https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+✅Anonymous hyperlink notation: `published guide (anonymous notation)`__
+
+.. code-block:: rest
+
+    .. __: https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+    Anonymous hyperlink notation: `published guide (anonymous notation)`__
+
+✅Embedded URL with double underscore: `GitHub Repository (without target definition) <https://github.com/ftnext/sphinx-new-tab-link>`__
+
+.. code-block:: rst
+
+    `GitHub Repository (without target definition) <https://github.com/ftnext/sphinx-new-tab-link>`__
+
+✅Refer again to the target defined by the embedded URL with single underscore (See *GitHub Repository* at 'Links' section): `GitHub Repository`_
+
+.. code-block:: rst
+
+    `GitHub Repository <https://github.com/ftnext/sphinx-new-tab-link>`_
+
+    Can refer `GitHub Repository`_ again.
+
 Enjoy documentation!🙌
