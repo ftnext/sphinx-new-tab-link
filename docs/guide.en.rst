@@ -85,4 +85,9 @@ https://github.com/ftnext/sphinx-new-tab-link
 
     Can refer `GitHub Repository`_ again.
 
+.. note:: note: Also supports `sphinx.ext.autodoc <https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html>`__!
+
+    For HTML built from a docstring containing a URL, your browser open the URL in a new tab.
+    The :doc:`api` documentation of ``sphinx-new-tab-link`` is an example of that! 🐶
+
 Enjoy documentation!🙌
