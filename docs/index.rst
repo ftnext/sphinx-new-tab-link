@@ -8,11 +8,16 @@ Welcome to sphinx-new-tab-link documentation's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: For library users:
 
    guide.rst
    guide.en.rst
 
+.. toctree::
+   :maxdepth: 1
+   :caption: For developers:
+
+   api.rst
 
 Indices and tables
 ==================
