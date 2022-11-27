@@ -85,4 +85,9 @@ https://github.com/ftnext/sphinx-new-tab-link
 
     再度 `GitHub Repository`_ を参照できる
 
+.. note:: `sphinx.ext.autodoc <https://www.sphinx-doc.org/ja/master/usage/extensions/autodoc.html>`__ にも対応しています！
+
+    URLを含んだdocstringからビルドしたHTMLでも、URLはブラウザの新しいタブで開きます。
+    ``sphinx-new-tab-link`` の :doc:`api` のドキュメントは、その例になっているんですよ！🐶
+
 Enjoy documentation!🙌
