@@ -15,7 +15,7 @@ jobs:
     - name: Install build dependencies
       run: |
         python -m pip install -U pip
-        python -m pip install .
+        python -m pip install . myst-parser
     - name: Build document
       run: |
         cd docs/
