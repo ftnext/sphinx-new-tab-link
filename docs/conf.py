@@ -19,6 +19,7 @@ author = "nikkie"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    "myst_parser",
     "sphinx.ext.autodoc",
     "sphinx_new_tab_link",
     "sphinx.ext.githubpages",
