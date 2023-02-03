@@ -12,6 +12,7 @@ Welcome to sphinx-new-tab-link documentation's documentation!
 
    guide.rst
    guide.en.rst
+   markdown-example
 
 .. toctree::
    :maxdepth: 1
