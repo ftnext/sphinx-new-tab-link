@@ -35,3 +35,9 @@ language = "ja"
 
 html_theme = "alabaster"
 html_static_path = ["_static"]
+
+
+# -- Options for MyST-Parser -------------------------------------------------
+# https://myst-parser.readthedocs.io/en/latest/configuration.html
+
+myst_heading_anchors = 2
