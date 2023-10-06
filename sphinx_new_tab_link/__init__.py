@@ -23,4 +23,5 @@ class NewTabLinkHTMLTranslator(HTMLTranslator):
 
 def setup(app):
     app.set_translator("html", NewTabLinkHTMLTranslator)
+    app.set_translator("dirhtml", NewTabLinkHTMLTranslator)
     app.set_translator("singlehtml", NewTabLinkHTMLTranslator)
