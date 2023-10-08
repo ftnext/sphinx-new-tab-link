@@ -1,5 +1,3 @@
-from io import StringIO
-
 import pytest
 from bs4 import BeautifulSoup
 from sphinx.testing.util import SphinxTestApp
@@ -32,11 +30,7 @@ from sphinx.testing.util import SphinxTestApp
 )
 @pytest.mark.sphinx("html", testroot="default")
 def test_should_open_new_tab(
-    app: SphinxTestApp,
-    status: StringIO,
-    warning: StringIO,
-    index: int,
-    expected_url: str,
+    app: SphinxTestApp, index: int, expected_url: str
 ):
     app.build()
     html = (app.outdir / "index.html").read_text()
@@ -51,9 +45,7 @@ def test_should_open_new_tab(
 
 
 @pytest.mark.sphinx("html", testroot="default")
-def test_internal_link_should_not_open_new_tab(
-    app: SphinxTestApp, status: StringIO, warning: StringIO
-):
+def test_internal_link_should_not_open_new_tab(app: SphinxTestApp):
     app.build()
     html = (app.outdir / "index.html").read_text()
     soup = BeautifulSoup(html, "html.parser")
