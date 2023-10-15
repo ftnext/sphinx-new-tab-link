@@ -1,0 +1,35 @@
+[project]
+name = "sphinx-new-tab-link"
+version = "0.2.1"
+description = "Open external links in new tabs of the browser in Sphinx HTML documents"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = { text = "MIT License" }
+authors = [{ name = "nikkie", email = "takuyafjp+develop@gmail.com" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Framework :: Sphinx",
+    "Framework :: Sphinx :: Extension",
+    "Topic :: Documentation",
+    "Topic :: Documentation :: Sphinx",
+    "Topic :: Software Development :: Documentation",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = ["Sphinx"]
+
+[project.optional-dependencies]
+testing = ["pytest", "beautifulsoup4"]
+lint = ["flake8", "black", "isort"]
+dev = ["wheel", "build", "twine"]
+
+[project.urls]
+Homepage = "https://github.com/ftnext/sphinx-new-tab-link"
+Guide = "https://ftnext.github.io/sphinx-new-tab-link/guide.en.html"
+"Bug Tracker" = "https://github.com/ftnext/sphinx-new-tab-link/issues"
