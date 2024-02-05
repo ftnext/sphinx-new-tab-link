@@ -18,7 +18,11 @@ class NewTabLinkHTMLTranslator(HTMLTranslator):
         ):
             atts["target"] = "_blank"
             atts["rel"] = "noopener noreferrer"
-        return super().starttag(node, tagname, *args, **atts)
+        # Support method assignment like the following (But hack)
+        # SomeTranslator.starttag = NewTabLinkHTMLTranslator.starttag
+        return super(self.__class__, self).starttag(
+            node, tagname, *args, **atts
+        )
 
 
 def setup(app):
