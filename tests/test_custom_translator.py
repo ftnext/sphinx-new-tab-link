@@ -1,13 +1,14 @@
 import shutil
 from pathlib import Path
 
+import pytest
 from bs4 import BeautifulSoup
 
 
+@pytest.mark.parametrize("testroot", ["method-assignment", "dynamic-class"])
 def test_should_open_new_tab(
-    make_app, sphinx_test_tempdir: Path, rootdir: str
+    make_app, sphinx_test_tempdir: Path, rootdir: str, testroot: str
 ):
-    testroot = "method-assignment"
     srcdir = sphinx_test_tempdir / testroot
     if not srcdir.exists():
         testroot_path = rootdir / f"test-{testroot}"
