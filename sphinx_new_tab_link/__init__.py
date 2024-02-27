@@ -20,9 +20,11 @@ class NewTabLinkHTMLTranslator(HTMLTranslator):
             atts["rel"] = "noopener noreferrer"
         # Support method assignment like the following (But hack)
         # SomeTranslator.starttag = NewTabLinkHTMLTranslator.starttag
-        return super(self.__class__, self).starttag(
-            node, tagname, *args, **atts
-        )
+        if not isinstance(self, NewTabLinkHTMLTranslator):
+            return super(self.__class__, self).starttag(
+                node, tagname, *args, **atts
+            )
+        return super().starttag(node, tagname, *args, **atts)
 
 
 def setup(app):
