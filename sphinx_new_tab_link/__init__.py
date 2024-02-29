@@ -1,5 +1,7 @@
 from sphinx.writers.html import HTMLTranslator
 
+__VERSION__ = "0.2.3"
+
 
 class NewTabLinkHTMLTranslator(HTMLTranslator):
     """Patched translator to open an external link in a new tab of the browser.
