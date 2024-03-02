@@ -1,3 +1,6 @@
+import types
+
+from sphinx.application import Sphinx
 from sphinx.writers.html import HTMLTranslator
 
 __VERSION__ = "0.2.3"
@@ -42,6 +45,28 @@ class NewTabLinkHTMLTranslator(HTMLTranslator):
                 node, tagname, *args, **atts
             )
         return super().starttag(node, tagname, *args, **atts)
+
+
+def inherit_mixin(translator_class):
+    return types.new_class(
+        "NewTabLinkHTMLTranslatorV2",
+        (NewTabLinkHTMLTranslatorMixin, translator_class),
+        {},
+    )
+
+
+def setup_translator(app: Sphinx) -> None:
+    builder_name = app.builder.name
+    if app.builder.format != "html":
+        return
+    if translator_class := app.registry.translators.get(builder_name):
+        app.set_translator(
+            builder_name, inherit_mixin(translator_class), override=True
+        )
+    else:
+        app.set_translator(
+            builder_name, inherit_mixin(app.builder.default_translator_class)
+        )
 
 
 def setup(app):
