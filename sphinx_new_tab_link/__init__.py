@@ -2,7 +2,7 @@ import types
 
 from sphinx.application import Sphinx
 
-__VERSION__ = "0.2.3"
+__VERSION__ = "0.3.0"
 
 
 class NewTabLinkHTMLTranslatorMixin:
