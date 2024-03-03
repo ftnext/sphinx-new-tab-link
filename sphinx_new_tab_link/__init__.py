@@ -70,8 +70,6 @@ def setup_translator(app: Sphinx) -> None:
 
 
 def setup(app):
-    app.set_translator("html", NewTabLinkHTMLTranslator)
-    app.set_translator("dirhtml", NewTabLinkHTMLTranslator)
-    app.set_translator("singlehtml", NewTabLinkHTMLTranslator)
+    app.connect("builder-inited", setup_translator)
 
     return {"version": __VERSION__}
