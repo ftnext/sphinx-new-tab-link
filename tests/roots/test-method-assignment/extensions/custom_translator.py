@@ -1,12 +1,16 @@
-from sphinx.writers.html5 import HTML5Translator
+"""There is no need of method assignment.
 
-from sphinx_new_tab_link import NewTabLinkHTMLTranslator
+v0.3.0 or later, sphinx_new_tab_link supports dynamic inheritance to add
+functionality to open an external link in a new tab of the browser.
+"""
+
+from sphinx.writers.html5 import HTML5Translator
 
 
 class MyTranslator(HTML5Translator): ...
 
 
-MyTranslator.starttag = NewTabLinkHTMLTranslator.starttag
+# MyTranslator.starttag = NewTabLinkHTMLTranslator.starttag
 
 
 def setup(app):
