@@ -1,7 +1,6 @@
 import types
 
 from sphinx.application import Sphinx
-from sphinx.writers.html import HTMLTranslator
 
 __VERSION__ = "0.2.3"
 
@@ -23,27 +22,6 @@ class NewTabLinkHTMLTranslatorMixin:
         ):
             atts["target"] = "_blank"
             atts["rel"] = "noopener noreferrer"
-        return super().starttag(node, tagname, *args, **atts)
-
-
-class NewTabLinkHTMLTranslator(HTMLTranslator):
-    def starttag(self, node, tagname, *args, **atts):
-        if (
-            tagname == "a"
-            and "target" not in atts
-            and (
-                "external" in atts.get("class", "")
-                or "external" in atts.get("classes", [])
-            )
-        ):
-            atts["target"] = "_blank"
-            atts["rel"] = "noopener noreferrer"
-        # Support method assignment like the following (But hack)
-        # SomeTranslator.starttag = NewTabLinkHTMLTranslator.starttag
-        if not isinstance(self, NewTabLinkHTMLTranslator):
-            return super(self.__class__, self).starttag(
-                node, tagname, *args, **atts
-            )
         return super().starttag(node, tagname, *args, **atts)
 
 
