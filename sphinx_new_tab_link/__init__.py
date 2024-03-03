@@ -28,7 +28,7 @@ class NewTabLinkHTMLTranslatorMixin:
 
 def inherit_mixin(translator_class):
     return types.new_class(
-        "NewTabLinkHTMLTranslatorV2",
+        "NewTabLinkHTMLTranslator",
         (NewTabLinkHTMLTranslatorMixin, translator_class),
         {},
     )
