@@ -1,7 +1,7 @@
 # https://github.com/ftnext/sphinx-new-tab-link/issues/11
 import types
 
-from sphinx_new_tab_link import NewTabLinkHTMLTranslator
+from sphinx.writers.html import HTMLTranslator
 
 
 class StartTagMixin:
@@ -10,7 +10,7 @@ class StartTagMixin:
 
 
 def setup(app):
-    app.set_translator("html", NewTabLinkHTMLTranslator)
+    app.set_translator("html", HTMLTranslator)
 
     translator_class = types.new_class(
         "MyTranslator",
