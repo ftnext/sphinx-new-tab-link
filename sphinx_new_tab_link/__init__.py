@@ -1,4 +1,5 @@
 import types
+from typing import TypedDict
 
 from sphinx.application import Sphinx
 
@@ -47,7 +48,11 @@ def setup_translator(app: Sphinx) -> None:
         )
 
 
-def setup(app):
+class ExtensionMetadata(TypedDict):
+    version: str
+
+
+def setup(app: Sphinx) -> ExtensionMetadata:
     app.connect("builder-inited", setup_translator)
 
     return {"version": __VERSION__}
