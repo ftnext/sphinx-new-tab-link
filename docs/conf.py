@@ -6,7 +6,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath("../sphinx_new_tab_link"))
+sys.path.insert(0, os.path.abspath("../src/sphinx_new_tab_link"))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
