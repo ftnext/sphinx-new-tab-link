@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 @pytest.mark.parametrize("testroot", ["method-assignment", "dynamic-class"])
 def test_should_open_new_tab(
-    make_app, sphinx_test_tempdir: Path, rootdir: str, testroot: str
+    make_app, sphinx_test_tempdir: Path, rootdir: Path, testroot: str
 ):
     srcdir = sphinx_test_tempdir / testroot
     if not srcdir.exists():

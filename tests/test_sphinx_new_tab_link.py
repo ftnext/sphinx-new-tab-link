@@ -1,4 +1,5 @@
 import shutil
+from pathlib import Path
 
 import pytest
 from bs4 import BeautifulSoup
@@ -33,7 +34,7 @@ from bs4 import BeautifulSoup
 def test_should_open_new_tab(
     make_app,
     sphinx_test_tempdir: str,
-    rootdir: str,
+    rootdir: Path,
     builder: str,
     index: int,
     expected_url: str,
@@ -60,7 +61,7 @@ def test_should_open_new_tab(
 
 @pytest.mark.parametrize("builder", ["html", "singlehtml", "dirhtml"])
 def test_internal_link_should_not_open_new_tab(
-    make_app, sphinx_test_tempdir: str, rootdir: str, builder: str
+    make_app, sphinx_test_tempdir: str, rootdir: Path, builder: str
 ):
     testroot = "default"
     srcdir = sphinx_test_tempdir / testroot
