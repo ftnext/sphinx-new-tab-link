@@ -55,4 +55,4 @@ class ExtensionMetadata(TypedDict):
 def setup(app: Sphinx) -> ExtensionMetadata:
     app.connect("builder-inited", setup_translator)
 
-    return {"version": __VERSION__}
+    return {"version": __VERSION__, "parallel_read_safe": True}
