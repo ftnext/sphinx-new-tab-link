@@ -33,7 +33,7 @@ from bs4 import BeautifulSoup
 )
 def test_should_open_new_tab(
     make_app,
-    sphinx_test_tempdir: str,
+    sphinx_test_tempdir: Path,
     rootdir: Path,
     builder: str,
     index: int,
@@ -61,7 +61,7 @@ def test_should_open_new_tab(
 
 @pytest.mark.parametrize("builder", ["html", "singlehtml", "dirhtml"])
 def test_internal_link_should_not_open_new_tab(
-    make_app, sphinx_test_tempdir: str, rootdir: Path, builder: str
+    make_app, sphinx_test_tempdir: Path, rootdir: Path, builder: str
 ):
     testroot = "default"
     srcdir = sphinx_test_tempdir / testroot
