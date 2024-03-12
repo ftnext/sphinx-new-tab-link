@@ -50,6 +50,7 @@ def setup_translator(app: Sphinx) -> None:
 
 class ExtensionMetadata(TypedDict):
     version: str
+    parallel_read_safe: bool
 
 
 def setup(app: Sphinx) -> ExtensionMetadata:
