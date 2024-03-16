@@ -1,8 +1,7 @@
 from typing import TypedDict
 
 from sphinx.application import Sphinx
-
-from sphinx_new_tab_link.kasane import MixinDynamicInheritance, TranslatorSetUp
+from sphinxcontrib.kasane import new_translator_class_for_builder
 
 __VERSION__ = "0.3.1"
 
@@ -33,9 +32,9 @@ class ExtensionMetadata(TypedDict):
 
 
 def setup(app: Sphinx) -> ExtensionMetadata:
-    inheritance = MixinDynamicInheritance(
-        NewTabLinkHTMLTranslatorMixin, "NewTabLinkHTMLTranslator"
+    html_translator_handler = new_translator_class_for_builder(
+        "html", NewTabLinkHTMLTranslatorMixin, "NewTabLinkHTMLTranslator"
     )
-    app.connect("builder-inited", TranslatorSetUp("html", inheritance))
+    app.connect("builder-inited", html_translator_handler)
 
     return {"version": __VERSION__, "parallel_read_safe": True}
