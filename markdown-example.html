@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Markdown example / Markdownの例 &#8212; sphinx-new-tab-link documentation  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=c033477b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=4dbe4bdc"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="Guide of sphinx-new-tab-link" href="guide.en.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="markdown-example-markdown">
+<h1>Markdown example / Markdownの例<a class="headerlink" href="#markdown-example-markdown" title="Link to this heading">¶</a></h1>
+<p><em>Here is an example of how <code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code> works with HTML built from a Markdown file.</em><br />
+<em>MarkdownファイルからビルドされたHTMLでも<code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code>が機能する例です。</em></p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>reST version: <a class="reference internal" href="guide.en.html"><span class="std std-doc">reST example</span></a> / <a class="reference internal" href="guide.html"><span class="std std-doc">reSTの例</span></a></p>
+</div>
+<section id="links">
+<h2>Links / リンク集<a class="headerlink" href="#links" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>PyPI <a class="reference external" href="https://pypi.org/project/sphinx-new-tab-link/" rel="noopener noreferrer" target="_blank">https://pypi.org/project/sphinx-new-tab-link/</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ftnext/sphinx-new-tab-link" rel="noopener noreferrer" target="_blank">GitHub Repository</a></p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation / インストール<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-new-tab-link<span class="w"> </span>myst-parser
+</pre></div>
+</div>
+</section>
+<section id="how-to-use">
+<h2>How to use / 使い方<a class="headerlink" href="#how-to-use" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">conf.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;myst_parser&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sphinx_new_tab_link&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="supported-notations">
+<h2>Supported notations / 対応している記法<a class="headerlink" href="#supported-notations" title="Link to this heading">¶</a></h2>
+<p>It supports various notations of a external link possible in MyST.<br />
+MySTで可能なさまざまな記法による外部リンクをサポートしています。</p>
+<p>ref: <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/syntax/syntax.html#default-destination-resolution" rel="noopener noreferrer" target="_blank">https://myst-parser.readthedocs.io/en/latest/syntax/syntax.html#default-destination-resolution</a></p>
+<p>✅Autolinks</p>
+<p>See <em>PyPI</em> at <a class="reference internal" href="#links">'Links / リンク集' section</a></p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>&lt;https://pypi.org/project/sphinx-new-tab-link/&gt;
+</pre></div>
+</div>
+<p>✅Inline links (to external target)</p>
+<p>See <em>GitHub Repository</em> at <a class="reference internal" href="#links">'Links / リンク集' section</a></p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>[<span class="nt">GitHub Repository</span>](<span class="na">https://github.com/ftnext/sphinx-new-tab-link</span>)
+</pre></div>
+</div>
+<p>✅Reference links (to external target)</p>
+<p><a class="reference external" href="https://ftnext.github.io/sphinx-new-tab-link/guide.html" rel="noopener noreferrer" target="_blank">公開版ガイド(ja)</a></p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>[<span class="nt">公開版ガイド(ja)</span>][<span class="nl">guide-ja</span>]
+
+[<span class="nl">guide-ja</span>]: <span class="na">https://ftnext.github.io/sphinx-new-tab-link/guide.html</span>
+</pre></div>
+</div>
+<p>Enjoy documentation!🙌</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">sphinx-new-tab-link documentation</a></h1>
+
+
+
+
+
+
+
+
+<h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">For library users:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide.html"><code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code> 使い方ガイド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide.en.html">Guide of <code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Markdown example / Markdownの例</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#links">Links / リンク集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation / インストール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use / 使い方</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-notations">Supported notations / 対応している記法</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For developers:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="guide.en.html" title="前の章へ">Guide of <code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code></a></li>
+      <li>Next: <a href="api.html" title="次の章へ">API</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/markdown-example.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
