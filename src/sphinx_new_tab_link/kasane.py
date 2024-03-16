@@ -29,13 +29,8 @@ class TranslatorSetUp:
         if not self.is_target_format(app.builder):
             return
 
-        builder_name = app.builder.name
-        if translator_class := app.registry.translators.get(builder_name):
-            app.set_translator(
-                builder_name, self.inheritance(translator_class), override=True
-            )
-        else:
-            app.set_translator(
-                builder_name,
-                self.inheritance(app.builder.default_translator_class),
-            )
+        builder = app.builder
+        translator_class = app.registry.get_translator_class(builder)
+        app.set_translator(
+            builder.name, self.inheritance(translator_class), override=True
+        )
