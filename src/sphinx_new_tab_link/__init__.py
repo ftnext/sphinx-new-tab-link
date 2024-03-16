@@ -3,7 +3,7 @@ from typing import TypedDict
 from sphinx.application import Sphinx
 from sphinxcontrib.kasane import new_translator_class_for_builder
 
-__VERSION__ = "0.3.1"
+__VERSION__ = "0.4.0"
 
 
 class NewTabLinkHTMLTranslatorMixin:
