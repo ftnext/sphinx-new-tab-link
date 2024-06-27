@@ -9,7 +9,7 @@ def test_see_external_link_icon(
     sphinx_test_tempdir: Path,
     rootdir: Path,
 ):
-    srcdir = sphinx_test_tempdir / "test-external-link-icon"
+    srcdir = sphinx_test_tempdir / "external-link-icon"
     if not srcdir.exists():
         testroot_path = rootdir / "test-external-link-icon"
         shutil.copytree(testroot_path, srcdir)
@@ -22,10 +22,8 @@ def test_see_external_link_icon(
     references = soup.find_all("a", {"class": "reference"})
 
     ref = references[0]
-    assert (
-        ref.text
-        == "https://pypi.org/project/sphinx-new-tab-link/ (external link icon)"
-    )
+    assert ref.text == "https://pypi.org/project/sphinx-new-tab-link/ "
+    assert ref.svg
     assert ref["href"] == "https://pypi.org/project/sphinx-new-tab-link/"
     assert ref["target"] == "_blank"
     assert ref["rel"] == ["noopener", "noreferrer"]
