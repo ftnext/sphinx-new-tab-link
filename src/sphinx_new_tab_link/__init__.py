@@ -1,5 +1,6 @@
 from typing import TypedDict
 
+from docutils.nodes import Text
 from sphinx.application import Sphinx
 from sphinxcontrib.kasane import new_translator_class_for_builder
 
@@ -23,6 +24,8 @@ class NewTabLinkHTMLTranslatorMixin:
         ):
             atts["target"] = "_blank"
             atts["rel"] = "noopener noreferrer"
+            if self.builder.config.new_tab_link_show_external_link_icon:
+                node[0] = Text(node[0].astext() + " (external link icon)")
         return super().starttag(node, tagname, *args, **atts)
 
 
@@ -32,6 +35,8 @@ class ExtensionMetadata(TypedDict):
 
 
 def setup(app: Sphinx) -> ExtensionMetadata:
+    app.add_config_value("new_tab_link_show_external_link_icon", False, "html")
+
     html_translator_handler = new_translator_class_for_builder(
         "html", NewTabLinkHTMLTranslatorMixin, "NewTabLinkHTMLTranslator"
     )
