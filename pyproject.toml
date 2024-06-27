@@ -27,7 +27,7 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 testing = ["pytest", "beautifulsoup4"]
-typecheck = ["mypy", "types-beautifulsoup"]
+typecheck = ["mypy", "types-beautifulsoup4"]
 lint = ["flake8", "black", "isort"]
 dev = ["wheel", "build", "twine"]
 
