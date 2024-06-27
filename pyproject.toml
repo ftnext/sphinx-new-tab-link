@@ -26,7 +26,7 @@ dependencies = ["sphinxcontrib-extdevhelper-kasane"]
 dynamic = ["version"]
 
 [project.optional-dependencies]
-testing = ["pytest", "beautifulsoup4"]
+testing = ["pytest", "defusedxml", "beautifulsoup4"]
 typecheck = ["mypy", "types-beautifulsoup4"]
 lint = ["flake8", "black", "isort"]
 dev = ["wheel", "build", "twine"]
