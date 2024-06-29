@@ -33,4 +33,17 @@ extensions = [
 ]
 ```
 
+## Configuration
+
+### `new_tab_link_show_external_link_icon`
+
+* Type: `bool`
+* Default: `False`
+
+If you want to show external links with icons, set this to `True` in your `conf.py`.
+
+```python
+new_tab_link_show_external_link_icon = True
+```
+
 Enjoy documentation!🙌
