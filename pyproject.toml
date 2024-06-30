@@ -27,7 +27,7 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 testing = ["pytest", "pytest-randomly", "defusedxml", "beautifulsoup4"]
-typecheck = ["mypy", "types-beautifulsoup4"]
+typecheck = ["mypy", "types-docutils", "types-beautifulsoup4"]
 lint = ["flake8", "black", "isort", "autoflake", "pyupgrade"]
 dev = ["wheel", "build", "twine"]
 runner = ["taskipy"]
@@ -42,6 +42,7 @@ version = { attr = "sphinx_new_tab_link.__VERSION__" }
 
 [tool.mypy]
 exclude = ["tests/roots"]
+ignore_missing_imports = true
 
 [tool.taskipy.tasks]
 pre_test = "task format"
