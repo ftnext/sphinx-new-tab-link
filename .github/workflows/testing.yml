@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install -U pip
-          python -m pip install .[runner,testing,typecheck,lint]
+          python -m pip install .[dev,testing,typecheck,lint]
       - name: Run tests
         run: |
           task test

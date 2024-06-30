@@ -29,8 +29,7 @@ dynamic = ["version"]
 testing = ["pytest", "pytest-randomly", "defusedxml", "beautifulsoup4"]
 typecheck = ["mypy", "types-docutils", "types-beautifulsoup4"]
 lint = ["flake8", "black", "isort", "autoflake", "pyupgrade"]
-dev = ["wheel", "build", "twine"]
-runner = ["taskipy"]
+dev = ["taskipy"]
 
 [project.urls]
 Homepage = "https://github.com/ftnext/sphinx-new-tab-link"
