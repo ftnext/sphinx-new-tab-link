@@ -7,7 +7,7 @@ functionality to open an external link in a new tab of the browser.
 from sphinx.writers.html5 import HTML5Translator
 
 
-class MyTranslator(HTML5Translator): ...
+class MyTranslator(HTML5Translator): ...  # NOQA: E701
 
 
 # MyTranslator.starttag = NewTabLinkHTMLTranslator.starttag
