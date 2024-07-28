@@ -20,6 +20,10 @@ from bs4 import BeautifulSoup
         (4, "https://httpbin.org/"),
         (5, "https://example.com/"),
         (6, "https://github.com/ftnext/sphinx-new-tab-link"),
+        (
+            7,
+            "https://www.flickr.com/photos/pyconjp/48743997848/in/album-72157710870622516/",  # NOQA: E501
+        ),
     ],
     ids=[
         "url_only_line",
@@ -29,6 +33,7 @@ from bs4 import BeautifulSoup
         "embed_anonymous_external_link",
         "refer_embedded_external_link_target_again",
         "refer_anonymous_external_link_target",
+        "image_directive_target",
     ],
 )
 def test_should_open_new_tab(
