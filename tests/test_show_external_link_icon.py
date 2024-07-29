@@ -56,3 +56,4 @@ def test_external_link_icon_as_image_target(
         "in/album-72157710870622516/",
     )
     assert ref.img
+    assert ref.svg
