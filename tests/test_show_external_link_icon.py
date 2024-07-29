@@ -4,6 +4,12 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 
+def assert_is_external(reference, expected_url: str) -> None:
+    assert reference["href"] == expected_url
+    assert reference["target"] == "_blank"
+    assert reference["rel"] == ["noopener", "noreferrer"]
+
+
 def test_see_external_link_icon(
     make_app,
     sphinx_test_tempdir: Path,
@@ -24,9 +30,7 @@ def test_see_external_link_icon(
     ref = references[0]
     assert ref.text == "https://pypi.org/project/sphinx-new-tab-link/ "
     assert ref.svg
-    assert ref["href"] == "https://pypi.org/project/sphinx-new-tab-link/"
-    assert ref["target"] == "_blank"
-    assert ref["rel"] == ["noopener", "noreferrer"]
+    assert_is_external(ref, "https://pypi.org/project/sphinx-new-tab-link/")
 
 
 def test_external_link_icon_as_image_target(
@@ -46,10 +50,9 @@ def test_external_link_icon_as_image_target(
     references = soup.find_all("a", {"class": "reference"})
 
     ref = references[1]
-    assert (
-        ref["href"]
-        == "https://www.flickr.com/photos/pyconjp/48743997848/in/album-72157710870622516/"  # NOQA: E501
+    assert_is_external(
+        ref,
+        "https://www.flickr.com/photos/pyconjp/48743997848/"
+        "in/album-72157710870622516/",
     )
-    assert ref["target"] == "_blank"
-    assert ref["rel"] == ["noopener", "noreferrer"]
     assert ref.img
