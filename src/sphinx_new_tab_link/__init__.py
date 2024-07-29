@@ -27,7 +27,7 @@ class NewTabLinkHTMLTranslatorMixin:
             atts["target"] = "_blank"
             atts["rel"] = "noopener noreferrer"
             if self.builder.config.new_tab_link_show_external_link_icon:
-                node[0] = Text(node[0].astext() + " ")
+                node.append(Text(" "))
                 node.append(raw(text=external_link_icon_html(), format="html"))
         return super().starttag(node, tagname, *args, **atts)
 

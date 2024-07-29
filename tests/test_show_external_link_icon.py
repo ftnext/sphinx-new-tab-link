@@ -1,7 +1,6 @@
 import shutil
 from pathlib import Path
 
-import pytest
 from bs4 import BeautifulSoup
 
 
@@ -30,10 +29,10 @@ def test_see_external_link_icon(
     assert ref["rel"] == ["noopener", "noreferrer"]
 
 
-@pytest.mark.skip("WIP issue #16")
 def test_external_link_icon_as_image_target(
     make_app, sphinx_test_tempdir: Path, rootdir: Path
 ):
+    # https://github.com/ftnext/sphinx-new-tab-link/issues/16
     srcdir = sphinx_test_tempdir / "external-link-icon"
     if not srcdir.exists():
         testroot_path = rootdir / "test-external-link-icon"
