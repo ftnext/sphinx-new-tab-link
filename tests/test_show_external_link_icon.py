@@ -38,7 +38,7 @@ def test_see_external_link_icon(parsed_built_html):
     assert_is_external(ref, "https://pypi.org/project/sphinx-new-tab-link/")
 
 
-def test_external_link_icon_as_image_target(parsed_built_html):
+def test_can_see_icon_with_image_directive_target(parsed_built_html):
     # https://github.com/ftnext/sphinx-new-tab-link/issues/16
     references = parsed_built_html.find_all("a", {"class": "reference"})
 
@@ -46,6 +46,19 @@ def test_external_link_icon_as_image_target(parsed_built_html):
     assert_is_external(
         ref,
         "https://www.flickr.com/photos/pyconjp/48743997848/"
+        "in/album-72157710870622516/",
+    )
+    assert ref.img
+    assert ref.svg
+
+
+def test_can_see_icon_with_figure_directive_target(parsed_built_html):
+    references = parsed_built_html.find_all("a", {"class": "reference"})
+
+    ref = references[2]
+    assert_is_external(
+        ref,
+        "https://www.flickr.com/photos/pyconjp/48818171768/"
         "in/album-72157710870622516/",
     )
     assert ref.img
