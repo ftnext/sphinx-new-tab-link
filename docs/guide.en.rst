@@ -85,6 +85,26 @@ https://github.com/ftnext/sphinx-new-tab-link
 
     Can refer `GitHub Repository`_ again.
 
+✅ ``image`` directive specified ``:target:`` option 
+
+.. image:: _static/breakfast.jpg
+    :target: https://www.flickr.com/photos/pyconjp/48818171768/in/album-72157710870622516/
+
+.. code-block:: rst
+
+    .. image:: _static/breakfast.jpg
+        :target: https://www.flickr.com/photos/pyconjp/48818171768/in/album-72157710870622516/
+
+✅ ``figure`` directive specified ``:target:`` option
+
+.. figure:: _static/pyconjp2019.jpg
+    :target: https://www.flickr.com/photos/pyconjp/48743997848/in/album-72157710870622516/
+
+.. code-block:: rst
+
+    .. figure:: _static/pyconjp2019.jpg
+        :target: https://www.flickr.com/photos/pyconjp/48743997848/in/album-72157710870622516/
+
 .. note:: note: Also supports `sphinx.ext.autodoc <https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html>`__!
 
     For HTML built from a docstring containing a URL, your browser open the URL in a new tab.
