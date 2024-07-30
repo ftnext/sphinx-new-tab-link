@@ -85,6 +85,26 @@ https://github.com/ftnext/sphinx-new-tab-link
 
     再度 `GitHub Repository`_ を参照できる
 
+✅ ``:target:`` オプションを指定した ``image`` ディレクティブ
+
+.. image:: _static/breakfast.jpg
+    :target: https://www.flickr.com/photos/pyconjp/48818171768/in/album-72157710870622516/
+
+.. code-block:: rst
+
+    .. image:: _static/breakfast.jpg
+        :target: https://www.flickr.com/photos/pyconjp/48818171768/in/album-72157710870622516/
+
+✅ ``:target:`` オプションを指定した ``figure`` ディレクティブ
+
+.. figure:: _static/pyconjp2019.jpg
+    :target: https://www.flickr.com/photos/pyconjp/48743997848/in/album-72157710870622516/
+
+.. code-block:: rst
+
+    .. figure:: _static/pyconjp2019.jpg
+        :target: https://www.flickr.com/photos/pyconjp/48743997848/in/album-72157710870622516/
+
 .. note:: `sphinx.ext.autodoc <https://www.sphinx-doc.org/ja/master/usage/extensions/autodoc.html>`__ にも対応しています！
 
     URLを含んだdocstringからビルドしたHTMLでも、URLはブラウザの新しいタブで開きます。
