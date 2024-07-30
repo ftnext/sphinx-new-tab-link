@@ -6,7 +6,7 @@ from sphinxcontrib.kasane import new_translator_class_for_builder
 
 from sphinx_new_tab_link.extras import external_link_icon_html
 
-__VERSION__ = "0.5.1"
+__VERSION__ = "0.5.2"
 
 
 class NewTabLinkHTMLTranslatorMixin:
