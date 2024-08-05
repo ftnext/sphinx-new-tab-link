@@ -55,3 +55,6 @@ format_isort = "isort --profile black -l 79 src tests setup.py"
 check = "task check_flake8 && task check_mypy"
 check_flake8 = "flake8 src tests"
 check_mypy = "mypy src tests"
+
+[tool.pytest.ini_options]
+markers = ["sphinx_build_in_tempdir"]
