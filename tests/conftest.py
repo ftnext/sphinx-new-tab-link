@@ -28,13 +28,14 @@ def parsed_built_html(
     rootdir: Path,
 ):
     directory_name = get_marker_value(request, "sphinx_build_in_tempdir")
+    builder = get_marker_value(request, "sphinx_builder")
 
     srcdir = sphinx_test_tempdir / directory_name
     if not srcdir.exists():
         testroot_path = rootdir / f"test-{directory_name}"
         shutil.copytree(testroot_path, srcdir)
 
-    app = make_app("html", srcdir=srcdir)
+    app = make_app(builder, srcdir=srcdir)
     app.build()
 
     html = (app.outdir / "index.html").read_text()

@@ -7,6 +7,7 @@ def assert_is_external(reference, expected_url: str) -> None:
     assert reference["rel"] == ["noopener", "noreferrer"]
 
 
+@pytest.mark.sphinx_builder("html")
 @pytest.mark.sphinx_build_in_tempdir("external-link-icon")
 def test_see_external_link_icon(parsed_built_html):
     references = parsed_built_html.find_all("a", {"class": "reference"})
@@ -17,6 +18,7 @@ def test_see_external_link_icon(parsed_built_html):
     assert_is_external(ref, "https://pypi.org/project/sphinx-new-tab-link/")
 
 
+@pytest.mark.sphinx_builder("html")
 @pytest.mark.sphinx_build_in_tempdir("external-link-icon")
 def test_can_see_icon_with_image_directive_target(parsed_built_html):
     # https://github.com/ftnext/sphinx-new-tab-link/issues/16
@@ -32,6 +34,7 @@ def test_can_see_icon_with_image_directive_target(parsed_built_html):
     assert ref.svg
 
 
+@pytest.mark.sphinx_builder("html")
 @pytest.mark.sphinx_build_in_tempdir("external-link-icon")
 def test_can_see_icon_with_figure_directive_target(parsed_built_html):
     references = parsed_built_html.find_all("a", {"class": "reference"})

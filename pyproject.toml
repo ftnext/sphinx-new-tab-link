@@ -57,4 +57,4 @@ check_flake8 = "flake8 src tests"
 check_mypy = "mypy src tests"
 
 [tool.pytest.ini_options]
-markers = ["sphinx_build_in_tempdir"]
+markers = ["sphinx_builder", "sphinx_build_in_tempdir"]
