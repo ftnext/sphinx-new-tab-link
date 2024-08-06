@@ -13,6 +13,13 @@ def rootdir() -> Path:
     return Path(__file__).parent / "roots"
 
 
+def get_marker_value(request, marker_name: str):
+    marker = request.node.get_closest_marker(marker_name)
+    if marker is None:
+        raise RuntimeError(f"Mark as `{marker_name}`")
+    return marker.args[0]
+
+
 @pytest.fixture
 def parsed_built_html(
     request,
@@ -20,10 +27,7 @@ def parsed_built_html(
     sphinx_test_tempdir: Path,
     rootdir: Path,
 ):
-    marker = request.node.get_closest_marker("sphinx_build_in_tempdir")
-    if marker is None:
-        raise RuntimeError("Mark as `sphinx_build_in_tempdir`")
-    directory_name = marker.args[0]
+    directory_name = get_marker_value(request, "sphinx_build_in_tempdir")
 
     srcdir = sphinx_test_tempdir / directory_name
     if not srcdir.exists():
