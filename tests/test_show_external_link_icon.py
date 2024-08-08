@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from .helpers import extract_references
+from .helpers import assert_reference_is_external, extract_references
 
 
 @pytest.fixture
@@ -36,19 +36,15 @@ def built_html_path(make_app, builder: str, prepared_srcdir: Path) -> Path:
     return app.outdir / "index.html"
 
 
-def assert_is_external(reference, expected_url: str) -> None:
-    assert reference["href"] == expected_url
-    assert reference["target"] == "_blank"
-    assert reference["rel"] == ["noopener", "noreferrer"]
-
-
 def test_see_external_link_icon(built_html_path: Path) -> None:
     references = extract_references(built_html_path)
 
     ref = references[0]
     assert ref.text == "https://pypi.org/project/sphinx-new-tab-link/ "
     assert ref.svg
-    assert_is_external(ref, "https://pypi.org/project/sphinx-new-tab-link/")
+    assert_reference_is_external(
+        ref, "https://pypi.org/project/sphinx-new-tab-link/"
+    )
 
 
 def test_can_see_icon_with_image_directive_target(
@@ -58,7 +54,7 @@ def test_can_see_icon_with_image_directive_target(
     references = extract_references(built_html_path)
 
     ref = references[1]
-    assert_is_external(
+    assert_reference_is_external(
         ref,
         "https://www.flickr.com/photos/pyconjp/48743997848/"
         "in/album-72157710870622516/",
@@ -71,7 +67,7 @@ def test_can_see_icon_with_figure_directive_target(built_html_path) -> None:
     references = extract_references(built_html_path)
 
     ref = references[2]
-    assert_is_external(
+    assert_reference_is_external(
         ref,
         "https://www.flickr.com/photos/pyconjp/48818171768/"
         "in/album-72157710870622516/",

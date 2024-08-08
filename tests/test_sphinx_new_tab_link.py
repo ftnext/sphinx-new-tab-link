@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from .helpers import extract_references
+from .helpers import assert_reference_is_external, extract_references
 
 
 @pytest.fixture(params=["html", "singlehtml", "dirhtml"])
@@ -73,11 +73,7 @@ def test_should_open_new_tab(
 ) -> None:
     references = extract_references(built_html_path)
 
-    ref = references[index]
-    assert ref["href"] == expected_url
-    assert "external" in ref["class"]
-    assert ref["target"] == "_blank"
-    assert ref["rel"] == ["noopener", "noreferrer"]
+    assert_reference_is_external(references[index], expected_url)
 
 
 def test_internal_link_should_not_open_new_tab(built_html_path: Path) -> None:
