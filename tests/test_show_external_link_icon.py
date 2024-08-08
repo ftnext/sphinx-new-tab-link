@@ -1,4 +1,38 @@
+import shutil
+from pathlib import Path
+
 import pytest
+from bs4 import BeautifulSoup
+
+
+@pytest.fixture
+def builder() -> str:
+    return "html"
+
+
+@pytest.fixture()
+def directory_name() -> str:
+    return "external-link-icon"
+
+
+@pytest.fixture
+def prepared_srcdir(
+    sphinx_test_tempdir: Path, rootdir: Path, directory_name: str
+) -> Path:
+    srcdir = sphinx_test_tempdir / directory_name
+    if not srcdir.exists():
+        testroot_path = rootdir / f"test-{directory_name}"
+        shutil.copytree(testroot_path, srcdir)
+
+    return srcdir
+
+
+@pytest.fixture
+def built_html_path(make_app, builder: str, prepared_srcdir: Path) -> Path:
+    app = make_app(builder, srcdir=prepared_srcdir)
+    app.build()
+
+    return app.outdir / "index.html"
 
 
 def assert_is_external(reference, expected_url: str) -> None:
@@ -7,10 +41,10 @@ def assert_is_external(reference, expected_url: str) -> None:
     assert reference["rel"] == ["noopener", "noreferrer"]
 
 
-@pytest.mark.sphinx_builder("html")
-@pytest.mark.sphinx_build_in_tempdir("external-link-icon")
-def test_see_external_link_icon(parsed_built_html):
-    references = parsed_built_html.find_all("a", {"class": "reference"})
+def test_see_external_link_icon(built_html_path: Path) -> None:
+    html = built_html_path.read_text()
+    soup = BeautifulSoup(html, "html.parser")
+    references = soup.find_all("a", {"class": "reference"})
 
     ref = references[0]
     assert ref.text == "https://pypi.org/project/sphinx-new-tab-link/ "
