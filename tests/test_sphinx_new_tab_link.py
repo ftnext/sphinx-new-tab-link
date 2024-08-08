@@ -2,10 +2,40 @@ import shutil
 from pathlib import Path
 
 import pytest
-from bs4 import BeautifulSoup
+
+from .helpers import extract_references
 
 
-@pytest.mark.parametrize("builder", ["html", "singlehtml", "dirhtml"])
+@pytest.fixture(params=["html", "singlehtml", "dirhtml"])
+def builder(request) -> str:
+    return request.param
+
+
+@pytest.fixture()
+def directory_name() -> str:
+    return "default"
+
+
+@pytest.fixture
+def prepared_srcdir(
+    sphinx_test_tempdir: Path, rootdir: Path, directory_name: str
+) -> Path:
+    srcdir = sphinx_test_tempdir / directory_name
+    if not srcdir.exists():
+        testroot_path = rootdir / f"test-{directory_name}"
+        shutil.copytree(testroot_path, srcdir)
+
+    return srcdir
+
+
+@pytest.fixture
+def built_html_path(make_app, builder: str, prepared_srcdir: Path) -> Path:
+    app = make_app(builder, srcdir=prepared_srcdir)
+    app.build()
+
+    return app.outdir / "index.html"
+
+
 @pytest.mark.parametrize(
     "index,expected_url",
     [
@@ -37,25 +67,11 @@ from bs4 import BeautifulSoup
     ],
 )
 def test_should_open_new_tab(
-    make_app,
-    sphinx_test_tempdir: Path,
-    rootdir: Path,
-    builder: str,
+    built_html_path: Path,
     index: int,
     expected_url: str,
-):
-    testroot = "default"
-    srcdir = sphinx_test_tempdir / testroot
-    if not srcdir.exists():
-        testroot_path = rootdir / f"test-{testroot}"
-        shutil.copytree(testroot_path, srcdir)
-
-    app = make_app(builder, srcdir=srcdir)
-    app.build()
-
-    html = (app.outdir / "index.html").read_text()
-    soup = BeautifulSoup(html, "html.parser")
-    references = soup.find_all("a", {"class": "reference"})
+) -> None:
+    references = extract_references(built_html_path)
 
     ref = references[index]
     assert ref["href"] == expected_url
@@ -64,22 +80,8 @@ def test_should_open_new_tab(
     assert ref["rel"] == ["noopener", "noreferrer"]
 
 
-@pytest.mark.parametrize("builder", ["html", "singlehtml", "dirhtml"])
-def test_internal_link_should_not_open_new_tab(
-    make_app, sphinx_test_tempdir: Path, rootdir: Path, builder: str
-):
-    testroot = "default"
-    srcdir = sphinx_test_tempdir / testroot
-    if not srcdir.exists():
-        testroot_path = rootdir / f"test-{testroot}"
-        shutil.copytree(testroot_path, srcdir)
-
-    app = make_app(builder, srcdir=srcdir)
-    app.build()
-
-    html = (app.outdir / "index.html").read_text()
-    soup = BeautifulSoup(html, "html.parser")
-    references = soup.find_all("a", {"class": "reference"})
+def test_internal_link_should_not_open_new_tab(built_html_path: Path) -> None:
+    references = extract_references(built_html_path)
 
     ref = references[-1]
     assert "internal" in ref["class"]
