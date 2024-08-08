@@ -2,7 +2,8 @@ import shutil
 from pathlib import Path
 
 import pytest
-from bs4 import BeautifulSoup
+
+from .helpers import extract_references
 
 
 @pytest.fixture
@@ -42,9 +43,7 @@ def assert_is_external(reference, expected_url: str) -> None:
 
 
 def test_see_external_link_icon(built_html_path: Path) -> None:
-    html = built_html_path.read_text()
-    soup = BeautifulSoup(html, "html.parser")
-    references = soup.find_all("a", {"class": "reference"})
+    references = extract_references(built_html_path)
 
     ref = references[0]
     assert ref.text == "https://pypi.org/project/sphinx-new-tab-link/ "

@@ -2,7 +2,8 @@ import shutil
 from pathlib import Path
 
 import pytest
-from bs4 import BeautifulSoup
+
+from .helpers import extract_references
 
 
 @pytest.fixture
@@ -36,9 +37,7 @@ def built_html_path(make_app, builder: str, prepared_srcdir: Path) -> Path:
 
 
 def test_should_open_new_tab(built_html_path: Path) -> None:
-    html = built_html_path.read_text()
-    soup = BeautifulSoup(html, "html.parser")
-    references = soup.find_all("a", {"class": "reference"})
+    references = extract_references(built_html_path)
 
     assert len(references) == 1
     ref = references[0]
