@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from .helpers import extract_references
+from .helpers import assert_reference_attributes, extract_references
 
 
 @pytest.fixture
@@ -40,6 +40,4 @@ def test_should_open_new_tab(built_html_path: Path) -> None:
     references = extract_references(built_html_path)
 
     assert len(references) == 1
-    ref = references[0]
-    assert ref["target"] == "_blank"
-    assert ref["rel"] == ["noopener", "noreferrer"]
+    assert_reference_attributes(references[0])
