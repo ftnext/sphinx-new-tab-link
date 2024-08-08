@@ -51,11 +51,11 @@ def test_see_external_link_icon(built_html_path: Path) -> None:
     assert_is_external(ref, "https://pypi.org/project/sphinx-new-tab-link/")
 
 
-@pytest.mark.sphinx_builder("html")
-@pytest.mark.sphinx_build_in_tempdir("external-link-icon")
-def test_can_see_icon_with_image_directive_target(parsed_built_html):
+def test_can_see_icon_with_image_directive_target(
+    built_html_path: Path,
+) -> None:
     # https://github.com/ftnext/sphinx-new-tab-link/issues/16
-    references = parsed_built_html.find_all("a", {"class": "reference"})
+    references = extract_references(built_html_path)
 
     ref = references[1]
     assert_is_external(
@@ -67,10 +67,8 @@ def test_can_see_icon_with_image_directive_target(parsed_built_html):
     assert ref.svg
 
 
-@pytest.mark.sphinx_builder("html")
-@pytest.mark.sphinx_build_in_tempdir("external-link-icon")
-def test_can_see_icon_with_figure_directive_target(parsed_built_html):
-    references = parsed_built_html.find_all("a", {"class": "reference"})
+def test_can_see_icon_with_figure_directive_target(built_html_path) -> None:
+    references = extract_references(built_html_path)
 
     ref = references[2]
     assert_is_external(
