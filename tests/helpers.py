@@ -1,6 +1,12 @@
+import shutil
 from pathlib import Path
 
 from bs4 import BeautifulSoup
+
+
+def prepare_files(test_root: Path, test_tempdir: Path) -> None:
+    if not test_tempdir.exists():
+        shutil.copytree(test_root, test_tempdir)
 
 
 def extract_references(html_path: Path):

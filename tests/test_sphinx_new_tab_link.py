@@ -1,9 +1,12 @@
-import shutil
 from pathlib import Path
 
 import pytest
 
-from .helpers import assert_reference_is_external, extract_references
+from .helpers import (
+    assert_reference_is_external,
+    extract_references,
+    prepare_files,
+)
 
 
 @pytest.fixture(params=["html", "singlehtml", "dirhtml"])
@@ -21,9 +24,7 @@ def prepared_srcdir(
     sphinx_test_tempdir: Path, rootdir: Path, directory_name: str
 ) -> Path:
     srcdir = sphinx_test_tempdir / directory_name
-    if not srcdir.exists():
-        testroot_path = rootdir / f"test-{directory_name}"
-        shutil.copytree(testroot_path, srcdir)
+    prepare_files(rootdir / f"test-{directory_name}", srcdir)
 
     return srcdir
 
