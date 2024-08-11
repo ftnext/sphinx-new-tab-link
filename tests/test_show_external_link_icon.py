@@ -2,11 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from .helpers import (
-    assert_reference_is_external,
-    extract_references,
-    prepare_files,
-)
+from .helpers import assert_reference_is_external, extract_references
 
 
 @pytest.fixture
@@ -17,24 +13,6 @@ def builder() -> str:
 @pytest.fixture()
 def directory_name() -> str:
     return "external-link-icon"
-
-
-@pytest.fixture
-def prepared_srcdir(
-    sphinx_test_tempdir: Path, rootdir: Path, directory_name: str
-) -> Path:
-    srcdir = sphinx_test_tempdir / directory_name
-    prepare_files(rootdir / f"test-{directory_name}", srcdir)
-
-    return srcdir
-
-
-@pytest.fixture
-def built_html_path(make_app, builder: str, prepared_srcdir: Path) -> Path:
-    app = make_app(builder, srcdir=prepared_srcdir)
-    app.build()
-
-    return app.outdir / "index.html"
 
 
 def test_see_external_link_icon(built_html_path: Path) -> None:
