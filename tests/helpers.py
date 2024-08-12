@@ -1,7 +1,12 @@
+from __future__ import annotations
+
 import shutil
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 from bs4 import BeautifulSoup
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def prepare_files(test_root: Path, test_tempdir: Path) -> None:

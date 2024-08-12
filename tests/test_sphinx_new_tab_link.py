@@ -1,8 +1,13 @@
-from pathlib import Path
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 import pytest
 
 from .helpers import assert_reference_is_external, extract_references
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 @pytest.fixture(params=["html", "singlehtml", "dirhtml"])

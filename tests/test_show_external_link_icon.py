@@ -1,8 +1,13 @@
-from pathlib import Path
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 import pytest
 
 from .helpers import assert_reference_is_external, extract_references
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 @pytest.fixture
@@ -42,7 +47,9 @@ def test_can_see_icon_with_image_directive_target(
     assert ref.svg
 
 
-def test_can_see_icon_with_figure_directive_target(built_html_path) -> None:
+def test_can_see_icon_with_figure_directive_target(
+    built_html_path: Path,
+) -> None:
     references = extract_references(built_html_path)
 
     ref = references[2]
