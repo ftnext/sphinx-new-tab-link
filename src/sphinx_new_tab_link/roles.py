@@ -1,12 +1,11 @@
 from docutils import nodes
 from sphinx.util.docutils import ReferenceRole
 
-from sphinx_new_tab_link.extras import external_link_icon_html
+from sphinx_new_tab_link.core import add_icon_to_reference
 
 
 class IconLinkRole(ReferenceRole):
-    def run(self):
+    def run(self) -> tuple[list[nodes.Node], list[nodes.system_message]]:
         node = nodes.reference(text=self.title, refuri=self.target)
-        node.append(nodes.Text(" "))
-        node.append(nodes.raw(text=external_link_icon_html(), format="html"))
-        return [node], []
+        reference_with_icon = add_icon_to_reference(node)
+        return [reference_with_icon], []

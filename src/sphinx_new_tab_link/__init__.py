@@ -1,10 +1,9 @@
 from typing import TypedDict
 
-from docutils.nodes import Text, raw
 from sphinx.application import Sphinx
 from sphinxcontrib.kasane import new_translator_class_for_builder
 
-from sphinx_new_tab_link.extras import external_link_icon_html
+from sphinx_new_tab_link.core import add_icon_to_reference
 from sphinx_new_tab_link.roles import IconLinkRole
 
 __VERSION__ = "0.5.3"
@@ -28,8 +27,7 @@ class NewTabLinkHTMLTranslatorMixin:
             atts["target"] = "_blank"
             atts["rel"] = "noopener noreferrer"
             if self.builder.config.new_tab_link_show_external_link_icon:
-                node.append(Text(" "))
-                node.append(raw(text=external_link_icon_html(), format="html"))
+                node = add_icon_to_reference(node)
         return super().starttag(node, tagname, *args, **atts)
 
 
