@@ -15,7 +15,7 @@ def builder() -> str:
     return "html"
 
 
-@pytest.fixture()
+@pytest.fixture
 def directory_name() -> str:
     return "external-link-icon"
 

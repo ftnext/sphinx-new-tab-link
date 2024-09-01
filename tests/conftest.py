@@ -18,7 +18,7 @@ def builder() -> str:
     raise NotImplementedError("Define `builder` fixture in each test module")
 
 
-@pytest.fixture()
+@pytest.fixture
 def directory_name() -> str:
     raise NotImplementedError(
         "Define `directory_name` fixture in each test module"

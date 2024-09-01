@@ -15,7 +15,7 @@ def builder(request) -> str:
     return request.param
 
 
-@pytest.fixture()
+@pytest.fixture
 def directory_name() -> str:
     return "default"
 
