@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from .helpers import assert_reference_is_external, extract_references
+from .helpers import assert_reference_is_external_with_icon, extract_references
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -25,8 +25,7 @@ def test_see_external_link_icon(built_html_path: Path) -> None:
 
     ref = references[0]
     assert ref.text == "https://pypi.org/project/sphinx-new-tab-link/ "
-    assert ref.svg
-    assert_reference_is_external(
+    assert_reference_is_external_with_icon(
         ref, "https://pypi.org/project/sphinx-new-tab-link/"
     )
 
@@ -38,13 +37,12 @@ def test_can_see_icon_with_image_directive_target(
     references = extract_references(built_html_path)
 
     ref = references[1]
-    assert_reference_is_external(
+    assert_reference_is_external_with_icon(
         ref,
         "https://www.flickr.com/photos/pyconjp/48743997848/"
         "in/album-72157710870622516/",
     )
     assert ref.img
-    assert ref.svg
 
 
 def test_can_see_icon_with_figure_directive_target(
@@ -53,10 +51,9 @@ def test_can_see_icon_with_figure_directive_target(
     references = extract_references(built_html_path)
 
     ref = references[2]
-    assert_reference_is_external(
+    assert_reference_is_external_with_icon(
         ref,
         "https://www.flickr.com/photos/pyconjp/48818171768/"
         "in/album-72157710870622516/",
     )
     assert ref.img
-    assert ref.svg
