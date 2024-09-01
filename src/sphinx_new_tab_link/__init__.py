@@ -1,5 +1,6 @@
 from typing import TypedDict
 
+from docutils import nodes
 from sphinx.application import Sphinx
 from sphinxcontrib.kasane import new_translator_class_for_builder
 
@@ -15,7 +16,7 @@ class NewTabLinkHTMLTranslatorMixin:
     ref: https://stackoverflow.com/a/67153583
     """
 
-    def starttag(self, node, tagname, *args, **atts):
+    def starttag(self, node: nodes.Node, tagname: str, *args, **atts):
         if (
             tagname == "a"
             and "target" not in atts
@@ -24,11 +25,12 @@ class NewTabLinkHTMLTranslatorMixin:
                 or "external" in atts.get("classes", [])
             )
         ):
+            assert isinstance(node, nodes.reference)
             atts["target"] = "_blank"
             atts["rel"] = "noopener noreferrer"
-            if self.builder.config.new_tab_link_show_external_link_icon:
+            if self.builder.config.new_tab_link_show_external_link_icon:  # type: ignore[attr-defined]  # noqa: E501
                 node = add_icon_to_reference(node)
-        return super().starttag(node, tagname, *args, **atts)
+        return super().starttag(node, tagname, *args, **atts)  # type: ignore[misc]  # noqa: E501
 
 
 class ExtensionMetadata(TypedDict):
