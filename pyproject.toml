@@ -45,7 +45,7 @@ ignore_missing_imports = true
 
 [tool.taskipy.tasks]
 pre_test = "task format"
-test = "pytest -v"
+test = "pytest -v -x --ff"
 post_test = "task check"
 format = "task format_autoflake && task format_pyupgrade && task format_black && task format_isort"
 format_autoflake = "autoflake --in-place --remove-all-unused-imports $(find src tests -name '*.py') setup.py"
