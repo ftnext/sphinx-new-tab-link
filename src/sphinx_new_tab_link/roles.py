@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from docutils import nodes
 from sphinx.util.docutils import ReferenceRole
 
