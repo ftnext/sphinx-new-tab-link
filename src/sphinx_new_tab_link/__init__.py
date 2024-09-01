@@ -5,6 +5,7 @@ from sphinx.application import Sphinx
 from sphinxcontrib.kasane import new_translator_class_for_builder
 
 from sphinx_new_tab_link.extras import external_link_icon_html
+from sphinx_new_tab_link.roles import IconLinkRole
 
 __VERSION__ = "0.5.3"
 
@@ -39,6 +40,7 @@ class ExtensionMetadata(TypedDict):
 
 def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_config_value("new_tab_link_show_external_link_icon", False, "html")
+    app.add_role("icon-link", IconLinkRole())
 
     html_translator_handler = new_translator_class_for_builder(
         "html", NewTabLinkHTMLTranslatorMixin, "NewTabLinkHTMLTranslator"
