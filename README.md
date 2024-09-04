@@ -46,4 +46,12 @@ If you want to show external links with icons, set this to `True` in your `conf.
 new_tab_link_show_external_link_icon = True
 ```
 
+## Roles
+
+### External link with icon (Experimental)
+
+```rst
+External link: :icon-link:`Example <https://example.com/>`
+```
+
 Enjoy documentation!🙌
