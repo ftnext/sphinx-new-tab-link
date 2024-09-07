@@ -1,7 +1,6 @@
-from typing import TypedDict
-
 from docutils import nodes
 from sphinx.application import Sphinx
+from sphinx.util.typing import ExtensionMetadata
 from sphinxcontrib.kasane import new_translator_class_for_builder
 
 from sphinx_new_tab_link.core import add_icon_to_reference
@@ -33,11 +32,6 @@ class NewTabLinkHTMLTranslatorMixin:
         return super().starttag(node, tagname, *args, **atts)  # type: ignore[misc]  # noqa: E501
 
 
-class ExtensionMetadata(TypedDict):
-    version: str
-    parallel_read_safe: bool
-
-
 def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_config_value("new_tab_link_show_external_link_icon", False, "html")
     app.add_role("icon-link", IconLinkRole())
@@ -47,4 +41,4 @@ def setup(app: Sphinx) -> ExtensionMetadata:
     )
     app.connect("builder-inited", html_translator_handler)
 
-    return {"version": __VERSION__, "parallel_read_safe": True}
+    return ExtensionMetadata(version=__VERSION__, parallel_read_safe=True)
