@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from urllib.parse import urlparse
+
 from docutils import nodes
 from sphinx.util.docutils import ReferenceRole
 
@@ -17,6 +19,15 @@ class IconLinkRole(ReferenceRole):
     """
 
     def run(self) -> tuple[list[nodes.Node], list[nodes.system_message]]:
-        node = nodes.reference(text=self.title, refuri=self.target)
-        reference_with_icon = add_icon_to_reference(node)
-        return [reference_with_icon], []
+        parse_result = urlparse(self.target)
+        if parse_result.scheme:
+            node = nodes.reference(
+                text=self.title, refuri=self.target, internal=False
+            )
+            reference_with_icon = add_icon_to_reference(node)
+            return [reference_with_icon], []
+        else:
+            node = nodes.reference(
+                text=self.title, refuri=f"#{self.target}", internal=True
+            )
+            return [node], []
