@@ -36,3 +36,9 @@ def assert_reference_is_external_with_icon(
 ) -> None:
     assert_reference_is_external(reference, expected_url)
     assert reference.svg
+
+
+def assert_reference_is_not_external(reference) -> None:
+    assert "internal" in reference["class"]  # not external == internal
+    assert "target" not in reference.attrs
+    assert "rel" not in reference.attrs

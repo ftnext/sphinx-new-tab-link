@@ -4,7 +4,11 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from .helpers import assert_reference_is_external, extract_references
+from .helpers import (
+    assert_reference_is_external,
+    assert_reference_is_not_external,
+    extract_references,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -63,7 +67,4 @@ def test_should_open_new_tab(
 def test_internal_link_should_not_open_new_tab(built_html_path: Path) -> None:
     references = extract_references(built_html_path)
 
-    ref = references[-1]
-    assert "internal" in ref["class"]
-    assert "target" not in ref.attrs
-    assert "rel" not in ref.attrs
+    assert_reference_is_not_external(references[-1])
