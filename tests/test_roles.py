@@ -7,6 +7,7 @@ import pytest
 from .helpers import (
     assert_reference_is_external,
     assert_reference_is_external_with_icon,
+    assert_reference_is_not_external,
     extract_references,
 )
 
@@ -30,6 +31,13 @@ def test_see_external_link_with_icon(built_html_path: Path) -> None:
     ref = references[1]
     assert_reference_is_external_with_icon(ref, "https://httpbin.org/")
     assert ref.text == "httpbin "
+
+
+@pytest.mark.skip("TODO bugfix #19")
+def test_see_internal_link_without_icon(built_html_path: Path) -> None:
+    references = extract_references(built_html_path)
+
+    assert_reference_is_not_external(references[2])
 
 
 def test_regression_1(built_html_path: Path) -> None:
