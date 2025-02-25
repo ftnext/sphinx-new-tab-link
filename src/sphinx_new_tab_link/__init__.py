@@ -26,7 +26,7 @@ class NewTabLinkHTMLTranslatorMixin:
         ):
             assert isinstance(node, nodes.reference)
             atts["target"] = "_blank"
-            atts["rel"] = "noopener noreferrer"
+            atts["rel"] = "noreferrer"
             if self.builder.config.new_tab_link_show_external_link_icon:  # type: ignore[attr-defined]  # noqa: E501
                 node = add_icon_to_reference(node)
         return super().starttag(node, tagname, *args, **atts)  # type: ignore[misc]  # noqa: E501

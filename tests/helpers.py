@@ -28,7 +28,7 @@ def assert_reference_is_external(reference, expected_url: str) -> None:
 def assert_reference_attributes(reference) -> None:
     assert "external" in reference["class"]
     assert reference["target"] == "_blank"
-    assert reference["rel"] == ["noopener", "noreferrer"]
+    assert reference["rel"] == ["noreferrer"]
 
 
 def assert_reference_is_external_with_icon(
