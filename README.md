@@ -18,7 +18,7 @@ External link: `Example <https://example.com/>`_
 is converted into
 
 ```html
-External link: <a class="reference external" href="https://example.com/" rel="noopener noreferrer" target="_blank">Example</a>
+External link: <a class="reference external" href="https://example.com/" rel="noreferrer" target="_blank">Example</a>
 ```
 
 ## Usage
