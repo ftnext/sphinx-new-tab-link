@@ -1,6 +1,9 @@
 name: Build document
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   docs:
