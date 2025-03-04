@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Guide of sphinx-new-tab-link &#8212; sphinx-new-tab-link documentation  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=c033477b"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=4755f45a"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="Markdown example / Markdownの例" href="markdown-example.html" />
+    <link rel="prev" title="sphinx-new-tab-link 使い方ガイド" href="guide.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="guide-of-sphinx-new-tab-link">
+<span id="english-guide"></span><h1>Guide of <code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code><a class="headerlink" href="#guide-of-sphinx-new-tab-link" title="Link to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code> is a Sphinx extension.</div>
+<div class="line">It builds HTML from source which enables <strong>your browser to open external links in new tabs</strong> ✨</div>
+<div class="line">I'll show you how to use it in this document (oh my gosh, this document is dogfooding too! 🐶)</div>
+</div>
+<p><em>このガイドの日本語版はこちらにあります：</em> <a class="reference internal" href="guide.html#japanese-guide"><span class="std std-ref">sphinx-new-tab-link 使い方ガイド</span></a></p>
+<section id="links">
+<h2>Links<a class="headerlink" href="#links" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>PyPI <a class="reference external" href="https://pypi.org/project/sphinx-new-tab-link/" rel="noreferrer" target="_blank">https://pypi.org/project/sphinx-new-tab-link/</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ftnext/sphinx-new-tab-link" rel="noreferrer" target="_blank">GitHub Repository</a></p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<p>You can install <code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code> from PyPI.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-new-tab-link
+</pre></div>
+</div>
+</section>
+<section id="how-to-use">
+<h2>How to use<a class="headerlink" href="#how-to-use" title="Link to this heading">¶</a></h2>
+<p>Enable this extension in your Sphinx project's <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">conf.py</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;sphinx_new_tab_link&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>That's it!</p>
+<p>External links in HTML will be opened in a new tab of the browser.</p>
+</section>
+<section id="supported-notations">
+<h2>Supported notations<a class="headerlink" href="#supported-notations" title="Link to this heading">¶</a></h2>
+<p>It supports various notations of a external link possible in reST.</p>
+<p>✅Line with URL only</p>
+<p><a class="reference external" href="https://github.com/ftnext/sphinx-new-tab-link" rel="noreferrer" target="_blank">https://github.com/ftnext/sphinx-new-tab-link</a></p>
+<p>✅URL written inline (See <em>PyPI</em> at 'Links' section)</p>
+<p>✅Define an external hyperlink target and refer it: <a class="reference external" href="https://ftnext.github.io/sphinx-new-tab-link/guide.html" rel="noreferrer" target="_blank">Published guide</a></p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_Published guide:</span> https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+Define an external hyperlink target and refer it: <span class="s">`Published guide`_</span>
+</pre></div>
+</div>
+<p>✅Anonymous hyperlink notation: <a class="reference external" href="https://ftnext.github.io/sphinx-new-tab-link/guide.html" rel="noreferrer" target="_blank">published guide (anonymous notation)</a></p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">__:</span> https://ftnext.github.io/sphinx-new-tab-link/guide.html
+
+Anonymous hyperlink notation: <span class="s">`published guide (anonymous notation)`__</span>
+</pre></div>
+</div>
+<p>✅Embedded URL with double underscore: <a class="reference external" href="https://github.com/ftnext/sphinx-new-tab-link" rel="noreferrer" target="_blank">GitHub Repository (without target definition)</a></p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="s">`GitHub Repository (without target definition) </span><span class="si">&lt;https://github.com/ftnext/sphinx-new-tab-link&gt;</span><span class="s">`__</span>
+</pre></div>
+</div>
+<p>✅Refer again to the target defined by the embedded URL with single underscore (See <em>GitHub Repository</em> at 'Links' section): <a class="reference external" href="https://github.com/ftnext/sphinx-new-tab-link" rel="noreferrer" target="_blank">GitHub Repository</a></p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="s">`GitHub Repository </span><span class="si">&lt;https://github.com/ftnext/sphinx-new-tab-link&gt;</span><span class="s">`_</span>
+
+Can refer <span class="s">`GitHub Repository`_</span> again.
+</pre></div>
+</div>
+<p>✅ <code class="docutils literal notranslate"><span class="pre">image</span></code> directive specified <code class="docutils literal notranslate"><span class="pre">:target:</span></code> option</p>
+<a class="reference external image-reference" href="https://www.flickr.com/photos/pyconjp/48818171768/in/album-72157710870622516/" rel="noreferrer" target="_blank"><img alt="_images/breakfast.jpg" src="_images/breakfast.jpg" />
+</a>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">image</span><span class="p">::</span> _static/breakfast.jpg
+    <span class="nc">:target:</span> https://www.flickr.com/photos/pyconjp/48818171768/in/album-72157710870622516/
+</pre></div>
+</div>
+<p>✅ <code class="docutils literal notranslate"><span class="pre">figure</span></code> directive specified <code class="docutils literal notranslate"><span class="pre">:target:</span></code> option</p>
+<figure class="align-default">
+<a class="reference external image-reference" href="https://www.flickr.com/photos/pyconjp/48743997848/in/album-72157710870622516/" rel="noreferrer" target="_blank"><img alt="_images/pyconjp2019.jpg" src="_images/pyconjp2019.jpg" />
+</a>
+</figure>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> _static/pyconjp2019.jpg
+    <span class="nc">:target:</span> https://www.flickr.com/photos/pyconjp/48743997848/in/album-72157710870622516/
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>note: Also supports <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html" rel="noreferrer" target="_blank">sphinx.ext.autodoc</a>!</p>
+<p>For HTML built from a docstring containing a URL, your browser open the URL in a new tab.
+The <a class="reference internal" href="api.html"><span class="doc">API</span></a> documentation of <code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code> is an example of that! 🐶</p>
+</div>
+<p>Enjoy documentation!🙌</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">sphinx-new-tab-link documentation</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">For library users:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide.html"><code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code> 使い方ガイド</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Guide of <code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-notations">Supported notations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-example.html">Markdown example / Markdownの例</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For developers:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="guide.html" title="前の章へ"><code class="docutils literal notranslate"><span class="pre">sphinx-new-tab-link</span></code> 使い方ガイド</a></li>
+      <li>Next: <a href="markdown-example.html" title="次の章へ">Markdown example / Markdownの例</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/guide.en.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
