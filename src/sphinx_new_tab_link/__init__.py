@@ -6,7 +6,7 @@ from sphinxcontrib.kasane import new_translator_class_for_builder
 from sphinx_new_tab_link.core import add_icon_to_reference
 from sphinx_new_tab_link.roles import IconLinkRole
 
-__VERSION__ = "0.6.1"
+__VERSION__ = "0.7.0"
 
 
 class NewTabLinkHTMLTranslatorMixin:
