@@ -22,12 +22,16 @@ def extract_references(html_path: Path):
 
 def assert_reference_is_external(reference, expected_url: str) -> None:
     assert reference["href"] == expected_url
-    assert_reference_attributes(reference)
+    assert_referrer_disabled_reference(reference)
 
 
 def assert_reference_attributes(reference) -> None:
     assert "external" in reference["class"]
     assert reference["target"] == "_blank"
+
+
+def assert_referrer_disabled_reference(reference) -> None:
+    assert_reference_attributes(reference)
     assert reference["rel"] == ["noreferrer"]
 
 
@@ -42,3 +46,15 @@ def assert_reference_is_not_external(reference) -> None:
     assert "internal" in reference["class"]  # not external == internal
     assert "target" not in reference.attrs
     assert "rel" not in reference.attrs
+
+
+def assert_referrer_enabled_reference(reference) -> None:
+    assert_reference_attributes(reference)
+    assert "rel" not in reference.attrs
+
+
+def assert_reference_is_external_with_referrer(
+    reference, expected_url: str
+) -> None:
+    assert reference["href"] == expected_url
+    assert_referrer_enabled_reference(reference)

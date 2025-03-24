@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from .helpers import assert_reference_attributes, extract_references
+from .helpers import assert_referrer_disabled_reference, extract_references
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -24,4 +24,4 @@ def test_should_open_new_tab(built_html_path: Path) -> None:
     references = extract_references(built_html_path)
 
     assert len(references) == 1
-    assert_reference_attributes(references[0])
+    assert_referrer_disabled_reference(references[0])
