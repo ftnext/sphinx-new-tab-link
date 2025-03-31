@@ -23,7 +23,6 @@ def directory_name() -> str:
     return "enable-referrer"
 
 
-@pytest.mark.skip("Not implemented yet")
 def test_should_enable_referrer_when_configured(built_html_path: Path) -> None:
     references = extract_references(built_html_path)
 

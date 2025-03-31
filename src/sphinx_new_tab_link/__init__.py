@@ -26,7 +26,8 @@ class NewTabLinkHTMLTranslatorMixin:
         ):
             assert isinstance(node, nodes.reference)
             atts["target"] = "_blank"
-            atts["rel"] = "noreferrer"
+            if not self.builder.config.new_tab_link_enable_referrer:  # type: ignore[attr-defined]  # noqa: E501
+                atts["rel"] = "noreferrer"
             if self.builder.config.new_tab_link_show_external_link_icon:  # type: ignore[attr-defined]  # noqa: E501
                 node = add_icon_to_reference(node)
         return super().starttag(node, tagname, *args, **atts)  # type: ignore[misc]  # noqa: E501
@@ -34,6 +35,7 @@ class NewTabLinkHTMLTranslatorMixin:
 
 def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_config_value("new_tab_link_show_external_link_icon", False, "html")
+    app.add_config_value("new_tab_link_enable_referrer", False, "html")
     app.add_role("icon-link", IconLinkRole())
 
     html_translator_handler = new_translator_class_for_builder(
