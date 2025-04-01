@@ -46,6 +46,17 @@ If you want to show external links with icons, set this to `True` in your `conf.
 new_tab_link_show_external_link_icon = True
 ```
 
+### `new_tab_link_enable_referrer`
+
+* Type: `bool`
+* Default: `False`
+
+If you want external links without `rel="noreferrer"`, set this to `True` in your `conf.py`.
+
+```python
+new_tab_link_enable_referrer = True
+```
+
 ## Roles
 
 ### External link with icon (Experimental)
