@@ -10,7 +10,7 @@
 ## Environment Setup
 - Project uses Python virtual environment (venv directory)
 - Claude Code and other AI tools should ignore the venv directory
-- Use Python 3.9 or higher for development
+- Use Python 3.10 or higher for development
 
 ## Code Style Guidelines
 - Line length: 79 characters
@@ -26,4 +26,4 @@
 ## Development Workflow
 - Write tests before implementation
 - Ensure all tests pass before committing
-- CI runs tests on Python 3.9-3.13
+- CI runs tests on Python 3.10-3.14
