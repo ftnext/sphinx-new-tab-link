@@ -24,7 +24,7 @@ def test_see_external_link_icon(built_html_path: Path) -> None:
     references = extract_references(built_html_path)
 
     ref = references[0]
-    assert ref.text == "https://pypi.org/project/sphinx-new-tab-link/ "
+    assert ref.text == "https://pypi.org/project/sphinx-new-tab-link/"
     assert_reference_is_external_with_icon(
         ref, "https://pypi.org/project/sphinx-new-tab-link/"
     )

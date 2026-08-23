@@ -30,7 +30,7 @@ def test_see_external_link_with_icon(built_html_path: Path) -> None:
 
     ref = references[1]
     assert_reference_is_external_with_icon(ref, "https://httpbin.org/")
-    assert ref.text == "httpbin "
+    assert ref.text == "httpbin"
 
 
 def test_see_internal_link_without_icon(built_html_path: Path) -> None:
