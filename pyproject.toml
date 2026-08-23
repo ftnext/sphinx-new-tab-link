@@ -42,6 +42,9 @@ Guide = "https://ftnext.github.io/sphinx-new-tab-link/guide.en.html"
 [tool.setuptools.dynamic]
 version = { attr = "sphinx_new_tab_link.__VERSION__" }
 
+[tool.setuptools.package-data]
+sphinx_new_tab_link = ["static/*.css"]
+
 [tool.mypy]
 exclude = ["tests/roots"]
 ignore_missing_imports = true
