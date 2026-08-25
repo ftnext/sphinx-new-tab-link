@@ -9,6 +9,9 @@ Open external links in new tabs of the browser in Sphinx HTML documents
 
 If you enable `sphinx_new_tab_link`, external links of built HTML are opened in new tabs of your browser.
 
+Images that link to external pages become slightly brighter when hovered or
+focused, making it easier to recognize that they are clickable.
+
 The reST
 
 ```rst

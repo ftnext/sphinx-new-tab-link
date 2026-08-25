@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from docutils import nodes
 from sphinx.application import Sphinx
 from sphinx.util.typing import ExtensionMetadata
@@ -7,6 +9,14 @@ from sphinx_new_tab_link.core import add_icon_to_reference
 from sphinx_new_tab_link.roles import IconLinkRole
 
 __VERSION__ = "0.8.1"
+
+
+def add_static_path(app: Sphinx) -> None:
+    if app.builder.format != "html":
+        return
+
+    static_path = Path(__file__).parent / "static"
+    app.config.html_static_path.append(str(static_path))
 
 
 class NewTabLinkHTMLTranslatorMixin:
@@ -37,10 +47,12 @@ def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_config_value("new_tab_link_show_external_link_icon", False, "html")
     app.add_config_value("new_tab_link_enable_referrer", False, "html")
     app.add_role("icon-link", IconLinkRole())
+    app.add_css_file("sphinx-new-tab-link.css")
 
     html_translator_handler = new_translator_class_for_builder(
         "html", NewTabLinkHTMLTranslatorMixin, "NewTabLinkHTMLTranslator"
     )
+    app.connect("builder-inited", add_static_path)
     app.connect("builder-inited", html_translator_handler)
 
     return ExtensionMetadata(version=__VERSION__, parallel_read_safe=True)
